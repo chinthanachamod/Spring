@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="06_Runtiome_Value_Injection" />
         <module name="07_Spring_Environment" />
+        <module name="08_Spring_Web_MVC" />
         <module name="04_FullModeVsLightMode" />
         <module name="05_Configuration" />
         <module name="01_Spring_Core" />
