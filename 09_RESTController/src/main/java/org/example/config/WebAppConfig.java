@@ -11,20 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"org.example.bean", "org.example.controller"})
+@ComponentScan(basePackages = {"org.example.controller"})
 public class WebAppConfig implements WebMvcConfigurer {
-    @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/view/");
-        viewResolver.setSuffix(".html");    // suffix ekak add karaganna
-        viewResolver.setOrder(2);
-        return viewResolver;
-    }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/WEB-INF/view/**")
-                .addResourceLocations("/WEB-INF/view/");
-    }
 }
