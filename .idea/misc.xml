@@ -16,11 +16,15 @@
         <option value="$PROJECT_DIR$/09_RESTController/pom.xml" />
         <option value="$PROJECT_DIR$/10_BackEnd/pom.xml" />
         <option value="$PROJECT_DIR$/11_Front_End/pom.xml" />
+        <option value="$PROJECT_DIR$/10_Front_End/pom.xml" />
+        <option value="$PROJECT_DIR$/11_Front_End/12_Spring_Data_JPA/pom.xml" />
+        <option value="$PROJECT_DIR$/12_Spring_Data_JPA/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/04_FullMOdeVsLightMode/pom.xml" />
+        <option value="$PROJECT_DIR$/10_Front_End/pom.xml" />
         <option value="$PROJECT_DIR$/11_Front_End/pom.xml" />
       </set>
     </option>

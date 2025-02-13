@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<h1 class="text-center m-2">Customer Management</h1>
+
+<form class="m-5">
+    <div class="mb-3">
+        <label for="customer_id" class="form-label">Customer ID</label>
+        <input type="text" class="form-control" id="customer_id" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="customer_name" class="form-label">Customer Name</label>
+        <input type="text" class="form-control" id="customer_name">
+    </div>
+    <div class="mb-3">
+        <label for="customer_address" class="form-label">Customer Address</label>
+        <input type="text" class="form-control" id="customer_address">
+    </div>
+    <div class="text-center">
+        <button id="btn_save_customer" type="button" class="btn btn-primary">SAVE</button>
+        <button id="btn_update_customer" type="button" class="btn btn-success">UPDATE</button>
+        <button id="btn_delete_customer" type="button" class="btn btn-danger">DELETE</button>
+    </div>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Customer Name</th>
+        <th class="text-center">Customer Address</th>
+    </tr>
+    </thead>
+    <tbody id="user_table_body"></tbody>
+</table>
+
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+<script>
+    const getAllCustomers = () => {
+        $.ajax({
+            url: "http://localhost:8080/10_BackEnd_war_exploded/api/v1/customer/getAll",
+            type: "GET",
+            success: (resp) => {
+                let tableBody = $("#user_table_body");
+                tableBody.empty();
+                resp.forEach((customer) => {
+                    let row = `<tr>
+                                    <td>${customer.id}</td>
+                                    <td>${customer.name}</td>
+                                    <td>${customer.address}</td>
+                               </tr>`;
+                    tableBody.append(row);
+                });
+            },
+            error: (err) => {
+                console.error("Error fetching customers: ", err);
+            }
+        });
+    };
+
+    // Initial load of customers
+    getAllCustomers();
+
+    $("#btn_save_customer").click(() => {
+        let customerId = $("#customer_id").val();
+        let customerName = $("#customer_name").val();
+        let customerAddress = $("#customer_address").val();
+
+        let customer = {
+            id: customerId,
+            name: customerName,
+            address: customerAddress
+        };
+
+        $.ajax({
+            url: "http://localhost:8080/10_BackEnd_war_exploded/api/v1/customer/save",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(customer),
+            success: () => {
+                getAllCustomers();
+                alert("Customer saved successfully.");
+            },
+            error: (err) => {
+                console.error("Error saving customer: ", err);
+                alert("Failed to save customer.");
+            }
+        });
+    });
+
+    $("#btn_update_customer").click(() => {
+        let customerId = $("#customer_id").val();
+        let customerName = $("#customer_name").val();
+        let customerAddress = $("#customer_address").val();
+
+        let customer = {
+            id: customerId,
+            name: customerName,
+            address: customerAddress
+        };
+
+        $.ajax({
+            url: "http://localhost:8080/10_BackEnd_war_exploded/api/v1/customer/update",
+            type: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify(customer),
+            success: () => {
+                getAllCustomers();
+                alert("Customer updated successfully.");
+            },
+            error: (err) => {
+                console.error("Error updating customer: ", err);
+                alert("Failed to update customer.");
+            }
+        });
+    });
+
+    $("#btn_delete_customer").click(() => {
+        let customerId = $("#customer_id").val();
+
+        $.ajax({
+            url: `http://localhost:8080/10_BackEnd_war_exploded/api/v1/customer/delete/{id}/${customerId}`,
+            type: "DELETE",
+            success: () => {
+                getAllCustomers();
+                alert("Customer deleted successfully.");
+            },
+            error: (err) => {
+                console.error("Error deleting customer: ", err);
+                alert("Failed to delete customer.");
+            }
+        });
+    });
+</script>
+</body>
+</html>

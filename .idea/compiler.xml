@@ -15,10 +15,12 @@
         <module name="01_Spring_Core" />
         <module name="10_BackEnd" />
         <module name="02_Spring_Bean_LifeCycle" />
+        <module name="12_Spring_Data_JPA" />
         <module name="03_Spring_DI" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="10_Front_End" target="17" />
       <module name="11_Front_End" target="17" />
     </bytecodeTargetLevel>
   </component>
