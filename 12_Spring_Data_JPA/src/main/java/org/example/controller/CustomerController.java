@@ -38,7 +38,7 @@ public class CustomerController {
         return customerDTO;
     }
 
-    @DeleteMapping(path = " ")
+    @DeleteMapping(path = "/delete/{id}")
     public boolean deleteCustomer(@PathVariable("id") String id) {
         for (int i = 0; i < customers.size(); i++) {
             CustomerDTO existingCustomer = customers.get(i);

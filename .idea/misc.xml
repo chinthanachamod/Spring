@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/Z13_Spring_Boot" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -19,6 +22,7 @@
         <option value="$PROJECT_DIR$/10_Front_End/pom.xml" />
         <option value="$PROJECT_DIR$/11_Front_End/12_Spring_Data_JPA/pom.xml" />
         <option value="$PROJECT_DIR$/12_Spring_Data_JPA/pom.xml" />
+        <option value="$PROJECT_DIR$/Z13_Spring_Boot/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
